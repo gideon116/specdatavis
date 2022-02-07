@@ -431,5 +431,4 @@ def tabcontents(run, undo, datatype, surfcolor, im1, imref):
 
 
 if __name__ == "__main__":
-  port = int(os.getenv("PORT", 8080))
-  app.run(host='0.0.0.0', port=port)
+    app.run_server(host=os.getenv("HOST", "0.0.0.0"), port=int(os.getenv("PORT", "8080")), debug=True, )
