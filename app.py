@@ -3,10 +3,8 @@ import dash_core_components as dcc
 import dash_html_components as html
 import base64
 import plotly.express as px
-
 from dash import no_update
 import os
-
 import pandas as pd
 
 def uvvis(file, reffile):
@@ -342,24 +340,23 @@ def surface_info(datatype, calibrate, upload, ref):
                                     '-ms-user-select': 'none'
                                     }
 
-    dropdown_style = {'font_color': 'rgb(0,0,0)'}
 
     if int(datatype) == 1:
 
         if int(calibrate) == 1:
             if upload is not None:
                 if ref is not None:
-                    return style, surface_color_format_style, surface_color_format_style, \
+                    return style, style, surface_color_format_style, \
                            {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, child, child
                 elif ref is None:
-                    return style, surface_color_format_style, surface_color_format_style, \
+                    return style, old_style, surface_color_format_style, \
                            {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, child, old_child
             elif upload is None:
                 if ref is not None:
-                    return style, surface_color_format_style, surface_color_format_style, \
+                    return old_style, style, surface_color_format_style, \
                            {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, old_child, child
                 elif ref is None:
-                    return style, surface_color_format_style, surface_color_format_style, \
+                    return old_style, old_style, surface_color_format_style, \
                            {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, old_child, old_child
 
 
@@ -368,7 +365,7 @@ def surface_info(datatype, calibrate, upload, ref):
                 return style, {'display': 'none'}, surface_color_format_style, \
                        {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, child, child,
             elif upload is None:
-                return style, {'display': 'none'}, surface_color_format_style, \
+                return old_style, {'display': 'none'}, surface_color_format_style, \
                        {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, old_child, old_child
 
     elif int(datatype) == 2:
@@ -376,7 +373,7 @@ def surface_info(datatype, calibrate, upload, ref):
             return style, {'display': 'none'}, {'display': 'none'}, \
                    {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, child, old_child
         elif upload is None:
-            return style, {'display': 'none'}, {'display': 'none'}, \
+            return old_style, {'display': 'none'}, {'display': 'none'}, \
                    {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, old_child, old_child
 
     elif int(datatype) == 3:
@@ -384,7 +381,7 @@ def surface_info(datatype, calibrate, upload, ref):
             return style, {'display': 'none'}, {'display': 'none'}, \
                    {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, child, child
         elif upload is None:
-            return style, {'display': 'none'}, {'display': 'none'}, \
+            return old_style, {'display': 'none'}, {'display': 'none'}, \
                    {'border': 'thin lightgrey solid', "borderStyle": "dashed"}, old_child, old_child
 
 
