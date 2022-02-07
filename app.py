@@ -111,7 +111,7 @@ def serve_layout():
                     children=[
                         html.Div(
                             id="banner",
-                            children=[html.H2("Data Visualizer", id="title", style={'font-weight': 300,
+                            children=[html.H2("SpecDataVis", id="title", style={'font-weight': 300,
                                                                                   "textAlign": "center"})]
                         ),
                         html.Div(id="dots", children=[
